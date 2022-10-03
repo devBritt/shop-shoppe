@@ -32,7 +32,7 @@ export function idbPromise(storeName, method, object) {
         request.onsuccess = function(e) {
             // save a reference of the database to the "db" variable
             db = request.result;
-            console.log(db);
+
             // open a tx do whatever we pass into "storeName" (must match on of the three stores)
             tx = db.transaction(storeName, 'readwrite');
             // save a reference to that object store
@@ -65,7 +65,6 @@ export function idbPromise(storeName, method, object) {
     
             // when the tx is complete, close the connection
             tx.oncomplete = function() {
-                console.log('inside tx.oncomplete');
                 db.close();
             }
         }
